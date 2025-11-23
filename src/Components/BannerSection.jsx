@@ -16,7 +16,7 @@ const BannerSection = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                         <div className="stats shadow-lg bg-white/10 backdrop-blur-sm">
                             <div className="stat">
-                                <div className="stat-value text-white">500+</div>
+                                <div className="stat-value text-white">5000+</div>
                                 <div className="stat-desc text-white/80">Students Trained</div>
                             </div>
                             <div className="stat">

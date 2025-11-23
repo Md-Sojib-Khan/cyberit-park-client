@@ -26,9 +26,9 @@ const FeaturesSection = () => {
     ];
 
     return (
-        <section className="py-20 bg-base-200">
+        <section className="pt-5 pb-20 bg-base-200">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
+                <div className="text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 ">Why Choose <span className=' bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>CyberIT Park</span>?</h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                         We provide the perfect environment for your IT career growth
