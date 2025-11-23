@@ -1,0 +1,58 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Rahim Ahmed",
+      "role": "Full Stack Developer",
+      "company": "Tech Solutions Ltd.",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+      "text": "CyberIT Park transformed my career. From zero to professional developer in 6 months! The instructors are amazing.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Sadia Islam",
+      "role": "UI/UX Designer",
+      "company": "Design Studio",
+      "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150",
+      "text": "The project-based approach helped me build a strong portfolio that got me hired within 2 months of completion.",
+      "rating": 4
+    },
+    {
+      "id": 3,
+      "name": "Arif Hossain",
+      "role": "Data Scientist",
+      "company": "AI Research Lab",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+      "text": "Excellent mentorship and real-world projects. Highly recommended for aspiring data scientists.",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "name": "Fatima Begum",
+      "role": "Mobile App Developer",
+      "company": "AppTech Solutions",
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
+      "text": "The React Native course was fantastic! I built 3 real apps during the course and got multiple job offers.",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "name": "Kamal Hossain",
+      "role": "DevOps Engineer",
+      "company": "Cloud Systems Inc.",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+      "text": "Career support team helped me negotiate a 50% higher salary. Best investment I ever made!",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "name": "Nusrat Jahan",
+      "role": "Frontend Developer",
+      "company": "Digital Agency",
+      "image": "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150",
+      "text": "From beginner to professional in just 4 months. The curriculum is perfectly structured for beginners.",
+      "rating": 5
+    }
+  ]
+}
