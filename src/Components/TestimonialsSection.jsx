@@ -8,6 +8,7 @@ import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
+import Image from 'next/image';
 
 const TestimonialsSection = () => {
     const [testimonials, setTestimonials] = useState([]);
@@ -66,6 +67,27 @@ const TestimonialsSection = () => {
                         loop={true}
                         modules={[EffectCoverflow, Pagination, Autoplay]}
                         className="mySwiper"
+                        breakpoints={{
+                            0: {
+                                slidesPerView: 1,
+                                spaceBetween: 20
+                            },
+                            // Tablet: 640px - 768px  
+                            640: {
+                                slidesPerView: 2,
+                                spaceBetween: 25
+                            },
+                            // Desktop: 768px - 1024px
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 30
+                            },
+                            // Large Desktop: 1024px+
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 30
+                            }
+                        }}
                     >
                         {testimonials.map((testimonial) => (
                             <SwiperSlide key={testimonial.id}>
@@ -75,10 +97,12 @@ const TestimonialsSection = () => {
                                         <div className="flex justify-center mb-4">
                                             <div className="avatar">
                                                 <div className="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100">
-                                                    <img 
+                                                    <Image 
                                                         src={testimonial.image} 
                                                         alt={testimonial.name}
-                                                        className="object-cover"
+                                                        width={96}  // w-24 = 96px
+                                                        height={96} // h-24 = 96px
+                                                        className="object-cover rounded-full"
                                                     />
                                                 </div>
                                             </div>

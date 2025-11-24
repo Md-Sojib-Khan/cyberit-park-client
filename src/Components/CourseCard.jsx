@@ -1,9 +1,14 @@
-// components/CourseCard.jsx
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CourseCard = ({ course }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    
+        useEffect(() => {
+            setIsVisible(true);
+        }, []);
     const renderStars = (rating) => {
         const fullStars = Math.floor(rating);
         const hasHalfStar = rating % 1 !== 0;
@@ -18,13 +23,16 @@ const CourseCard = ({ course }) => {
     };
 
     return (
-        <div className="card bg-base-100 shadow-xl hover:shadow-2xl group cursor-pointer transform transition-all duration-500 hover:-translate-y-3 border border-transparent hover:border-primary/20">
+        <div className={`card bg-base-100 shadow-xl hover:shadow-2xl group cursor-pointer transform transition-all duration-500 hover:-translate-y-3 border border-transparent hover:border-primary/20 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                    }`}>
             {/* Image with overlay */}
             <figure className="overflow-hidden relative">
-                <img
-                    src={course.image}
+                <Image
+                    src={course?.image}
                     alt={course.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    width={600}
+                    height={400}
+                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 {/* Featured Badge */}
                 {course.featured && (
@@ -40,8 +48,6 @@ const CourseCard = ({ course }) => {
                         {course.category}
                     </span>
                 </div>
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
             </figure>
 
             <div className="card-body p-5">
@@ -92,7 +98,7 @@ const CourseCard = ({ course }) => {
                     </div>
 
                     <Link
-                        href={`/course/${course.id}`}
+                        href={`/course/${course._id}`}
                         className="btn btn-primary btn-sm hover:scale-105 transition-transform group/btn"
                     >
                         <span className="group-hover/btn:scale-110 transition-transform">

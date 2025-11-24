@@ -1,9 +1,12 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSession, signOut } from "next-auth/react";
 import React from 'react';
+import Image from 'next/image';
 
 const Navbar = () => {
+    const { data: session } = useSession();
     const pathname = usePathname();
     const isActive = (path) => {
         if (path === '/') {
@@ -19,7 +22,7 @@ const Navbar = () => {
         <li><a>Contact Us</a></li>
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 shadow-sm md:px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,15 +34,32 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">CyberIT Park</a>
+                <Link href={'/'} className="font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">CyberIT Park</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="navbar-end space-x-3">
+                {
+                    session
+                        ? <div className="dropdown dropdown-end dropdown-hover cursor-pointer">
+                            <div tabIndex={0} role="button" >
+                                <Image width={20} height={20} className='w-10 h-10 object-cover rounded-full border-2 border-white' src={session.user.image || "/default.png"} alt="" />
+                            </div>
+                            <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-sm space-y-2">
+                                <li><a className='font-medium'>{session.user.name}</a></li>
+                                <li><Link href={'/'} className='font-medium'>Add Course</Link></li>
+                                <li><button onClick={() => signOut()} className="btn btn-primary btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">LogOut</button></li>
+                            </ul>
+                        </div>
+
+                        : <div className='flex items-center gap-2'>
+                            <Link href={'/login'} className="btn btn-primary btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">Login</Link>
+                            <Link href={'/register'} className="btn btn-primary btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">Register</Link>
+                        </div>
+                }
             </div>
         </div>
     );

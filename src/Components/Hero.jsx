@@ -1,8 +1,9 @@
 'use client';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 const Hero = () => {
-        const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         setIsVisible(true);
@@ -106,7 +107,9 @@ const Hero = () => {
 
                             {/* Coding GIF */}
                             <div className="rounded-b-xl overflow-hidden">
-                                <img
+                                <Image
+                                    width={500}
+                                    height={300}
                                     src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdqeWpwcmkxMW4wbWl3ZW0zNnU2azdqbXUxdGpmcTFnOHlvZzk2MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif"
                                     alt="Coding Animation"
                                     className="w-full h-auto rounded-b-xl"

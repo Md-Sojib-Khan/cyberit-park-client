@@ -8,6 +8,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**', // সব domains allow করতে
+        pathname: '**',
       },
     ],
   },
