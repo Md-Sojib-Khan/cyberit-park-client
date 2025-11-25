@@ -12,7 +12,7 @@ const MyCoursesPage = () => {
 
     useEffect(() => {
         if (session?.user?.email) {
-            fetch(`http://localhost:5000/course?email=${session.user.email}`)
+            fetch(`https://cyber-it-park-api-server.vercel.app/course?email=${session.user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setMyCourse(data);
@@ -38,7 +38,7 @@ const MyCoursesPage = () => {
         });
 
         if (result.isConfirmed) {
-            fetch(`http://localhost:5000/course/${courseId}`, {
+            fetch(`https://cyber-it-park-api-server.vercel.app/course/${courseId}`, {
                 method: 'DELETE'
             })
                 .then(response => response.json())

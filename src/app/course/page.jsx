@@ -10,7 +10,7 @@ const Page = () => {
 
     useEffect(() => {
         const fetchCourses = async () => {
-            const res = await fetch('http://localhost:5000/course');
+            const res = await fetch('https://cyber-it-park-api-server.vercel.app/course');
             const data = await res.json();
             setCourses(data);
         };

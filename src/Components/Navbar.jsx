@@ -46,7 +46,7 @@ const Navbar = () => {
                     session
                         ? <div className="dropdown dropdown-end dropdown-hover cursor-pointer">
                             <div tabIndex={0} role="button" >
-                                <Image width={20} height={20} className='w-10 h-10 object-cover rounded-full border-2 border-white' src={session.user.image || "/default.png"} alt="" />
+                                <Image width={20} height={20} className='w-10 h-10 object-cover rounded-full border-2 border-white' src={session.user.image || "https://static.thenounproject.com/png/363639-200.png"} alt="" />
                             </div>
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-sm space-y-2">
                                 <li><a className='font-medium'>{session.user.name}</a></li>

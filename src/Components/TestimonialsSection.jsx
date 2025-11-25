@@ -98,7 +98,7 @@ const TestimonialsSection = () => {
                                             <div className="avatar">
                                                 <div className="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100">
                                                     <Image 
-                                                        src={testimonial.image} 
+                                                        src={testimonial?.image} 
                                                         alt={testimonial.name}
                                                         width={96}  // w-24 = 96px
                                                         height={96} // h-24 = 96px

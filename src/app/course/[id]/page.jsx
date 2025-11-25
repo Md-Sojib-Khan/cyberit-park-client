@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const page = async ({ params }) => {
     const { id } = await params;
-    const res = await fetch(`http://localhost:5000/course/${id}`)
+    const res = await fetch(`https://cyber-it-park-api-server.vercel.app/course/${id}`)
     const course = await res.json();
 
     const renderStars = (rating) => {

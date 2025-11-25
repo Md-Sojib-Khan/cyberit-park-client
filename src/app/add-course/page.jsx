@@ -20,7 +20,7 @@ const page = () => {
         const created_at = new Date()
         const newCourse = { title, image, ratings, instructor, duration, description, addedBy, created_at, price, students }
 
-        fetch('http://localhost:5000/course', {
+        fetch('https://cyber-it-park-api-server.vercel.app/course', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
