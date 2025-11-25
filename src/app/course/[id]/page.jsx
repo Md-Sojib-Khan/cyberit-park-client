@@ -158,7 +158,7 @@ const page = async ({ params }) => {
                                         <div className="flex items-baseline gap-2">
                                             <span className="text-3xl font-bold">{course.price}</span>
                                             <span className="text-lg line-through opacity-80">
-                                                ৳{parseInt(course.price.replace('৳', '').replace(',', '')) + 5000}
+                                                ৳{parseInt(course?.price?.toString().replace(/৳|,/g, '') || 0) + 5000}
                                             </span>
                                         </div>
                                         <p className="text-sm opacity-90">Limited time offer</p>

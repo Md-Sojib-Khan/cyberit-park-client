@@ -18,8 +18,8 @@ const Navbar = () => {
     const links = <>
         <li><Link href={'/'} className={isActive('/') ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium' : ''}>Home</Link></li>
         <li><Link href={'/course'} className={isActive('/course') ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium' : ''}>Course</Link></li>
-        <li><a>About US</a></li>
-        <li><a>Contact Us</a></li>
+        <li><Link href={'/about-us'} className={isActive('/about-us') ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium' : ''}>About US</Link></li>
+        <li><Link href={'/contact-us'} className={isActive('/contact-us') ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium' : ''}>Contact Us</Link></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm md:px-10">
@@ -34,7 +34,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link href={'/'} className="font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">CyberIT Park</Link>
+                <Link href={'/'} className="font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent whitespace-nowrap">CyberIT Park</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -50,7 +50,8 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-20 w-52 p-2 shadow-sm space-y-2">
                                 <li><a className='font-medium'>{session.user.name}</a></li>
-                                <li><Link href={'/'} className='font-medium'>Add Course</Link></li>
+                                <li><Link href={'/add-course'} className='font-medium'>Add Course</Link></li>
+                                <li><Link href={'/manage-course'} className='font-medium'>Manage Course</Link></li>
                                 <li><button onClick={() => signOut()} className="btn btn-primary btn-sm rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg border-0 text-white font-medium">LogOut</button></li>
                             </ul>
                         </div>

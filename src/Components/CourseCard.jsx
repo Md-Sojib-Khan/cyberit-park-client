@@ -35,7 +35,7 @@ const CourseCard = ({ course }) => {
                     className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 {/* Featured Badge */}
-                {course.featured && (
+                {course?.featured && (
                     <div className="absolute top-3 left-3">
                         <span className="badge badge-primary badge-sm text-white font-bold">
                             Featured
@@ -45,7 +45,7 @@ const CourseCard = ({ course }) => {
                 {/* Category Badge */}
                 <div className="absolute top-3 right-3">
                     <span className="badge badge-secondary badge-sm text-white">
-                        {course.category}
+                        {course?.category}
                     </span>
                 </div>
             </figure>
@@ -79,21 +79,21 @@ const CourseCard = ({ course }) => {
                     </div>
                     <div className="flex items-center gap-1">
                         <span>🎯</span>
-                        <span>{course.projects} Projects</span>
+                        <span>{course?.projects} Projects</span>
                     </div>
                 </div>
 
                 {/* Ratings */}
                 <div className="mt-3">
-                    {renderStars(course.ratings)}
+                    {renderStars(course?.ratings)}
                 </div>
 
                 {/* Price & Button */}
                 <div className="card-actions justify-between items-center mt-4 pt-4 border-t border-gray-200">
                     <div className="flex flex-col">
-                        <span className="text-2xl font-bold text-primary">{course.price}</span>
+                        <span className="text-2xl font-bold text-primary">{course?.price}</span>
                         <span className="text-xs text-gray-500 line-through opacity-0 group-hover:opacity-100 transition-opacity">
-                            ৳{parseInt(course.price.replace('৳', '').replace(',', '')) + 2000}
+                            ৳{(parseInt(String(course?.price).replace(/৳|,/g, '')) || 0) + 2000}
                         </span>
                     </div>
 
