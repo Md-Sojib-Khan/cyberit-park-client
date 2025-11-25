@@ -33,6 +33,7 @@ const Page = () => {
             <h1 className="text-4xl font-bold text-center mb-5">
                 All <span className='bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>Course</span>
             </h1>
+            <p className="text-center w-5/6 mx-auto font-medium">We offer all the trendy courses that are in demand in the global market. In addition, you are getting lab facilities where high-end computers with the required configuration are ready to facilitate your learning. After class, you can practice the topic in our labs to grow your skills. The courses are designed to make you confident throughout the learning journey with Cyber IT Park.</p>
 
             {/* Simple Search & Filter */}
             <div className="flex justify-between gap-4 mb-8 flex-wrap">
