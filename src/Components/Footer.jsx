@@ -11,12 +11,12 @@ const Footer = () => {
                     <aside className='col-span-2'>
                         <div className='flex items-center gap-2 mb-4'>
                             <FaFilm className="text-purple-500 text-2xl" />
-                            <h1 className='font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>MovieMaster Pro</h1>
+                            <h1 className='font-bold text-2xl bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>CyberIT Park</h1>
                         </div>
                         <p className="text-gray-300 leading-relaxed">
-                            Your ultimate destination for movie magic. Discover, explore, and enjoy the world of cinema 
-                            with detailed information, reviews, and recommendations. From classic films to latest blockbusters, 
-                            we bring the theater experience to you.
+                            remier IT infrastructure and business ecosystem in Bangladesh. Providing world-class facilities, 
+                            high-speed internet, modern workspaces, and comprehensive business support for technology companies, 
+                            startups, and entrepreneurs to thrive in the digital economy.
                         </p>
                         <div className="flex gap-4 mt-4">
                             <a href="#" className="text-gray-400 hover:text-purple-500 transition-colors">
@@ -36,22 +36,22 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <nav className='flex flex-col gap-3'>
-                        <h6 className="text-lg font-semibold mb-2 text-white">Explore</h6>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Movies</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">TV Shows</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Trending</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Upcoming</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Top Rated</a>
+                        <h6 className="text-lg font-semibold mb-2 text-white">Quick Links</h6>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Home</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">About Us</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Services</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Facilities</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Contact Us</a>
                     </nav>
 
                     {/* Categories */}
                     <nav className='flex flex-col gap-3'>
-                        <h6 className="text-lg font-semibold mb-2 text-white">Categories</h6>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Action</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Comedy</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Drama</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Sci-Fi</a>
-                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Horror</a>
+                        <h6 className="text-lg font-semibold mb-2 text-white">Our Services</h6>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Office Spaces</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">High-Speed Internet</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Meeting Rooms</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">24/7 Security</a>
+                        <a className="text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">Business Support</a>
                     </nav>
 
                     {/* Support */}
@@ -69,12 +69,12 @@ const Footer = () => {
                 <div className="border-t border-gray-700 pt-6 mt-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <aside className="flex items-center gap-2 text-gray-300">
-                            <p>© {new Date().getFullYear()} MovieMaster Pro. All rights reserved.</p>
+                            <p>© {new Date().getFullYear()} Cyber IT Park. All rights reserved.</p>
                         </aside>
                         <div className="flex items-center gap-2 text-gray-300">
-                            <span>Made with</span>
+                            <span>Building the future of</span>
                             <FaHeart className="text-red-500" />
-                            <span>for movie lovers</span>
+                            <span>Bangladesh's IT sector</span>
                         </div>
                         <nav className="flex gap-6 text-gray-300">
                             <a className="hover:text-purple-400 transition-colors cursor-pointer text-sm">Privacy</a>
