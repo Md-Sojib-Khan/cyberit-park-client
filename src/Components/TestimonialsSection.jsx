@@ -35,7 +35,7 @@ const TestimonialsSection = () => {
         <section className="pb-10 bg-base-200">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4"><span className='bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>Success</span> Stories</h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                         Hear from our students who transformed their careers
                     </p>
