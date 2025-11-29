@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const Hero = () => {
@@ -65,9 +66,9 @@ const Hero = () => {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <button className="btn btn-primary btn-lg px-8 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                        <Link href={'/course'} className="btn btn-primary btn-lg px-8 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                             🎯 Explore Courses
-                        </button>
+                        </Link>
                         <button className="btn btn-outline text-white btn-lg px-8 text-lg font-semibold border-gray-300 hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 hover:text-black">
                             📞 Free Consultation
                         </button>

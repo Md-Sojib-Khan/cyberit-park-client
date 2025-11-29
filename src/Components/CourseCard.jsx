@@ -1,116 +1,194 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
-const CourseCard = ({ course }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    
-        useEffect(() => {
-            setIsVisible(true);
-        }, []);
+const CourseCard = ({ course, index }) => {
+    const [show, setShow] = useState(false);
+    const [hover, setHover] = useState(false);
+    const cardRef = useRef(null);
+
+    // Visible Animation Trigger
+    useEffect(() => {
+        const obs = new IntersectionObserver(
+            ([entry]) => entry.isIntersecting && setShow(true),
+            { threshold: 0.1 }
+        );
+        if (cardRef.current) obs.observe(cardRef.current);
+        return () => cardRef.current && obs.unobserve(cardRef.current);
+    }, []);
+
+    // Star Renderer
     const renderStars = (rating) => {
-        const fullStars = Math.floor(rating);
-        const hasHalfStar = rating % 1 !== 0;
-
+        const full = Math.floor(rating);
         return (
             <div className="flex items-center gap-1">
-                {"⭐".repeat(fullStars)}
-                {hasHalfStar && "⭐"}
+                {[...Array(5)].map((_, i) => (
+                    <motion.span
+                        key={i}
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: i < full ? 1 : 0.6, rotate: 0 }}
+                        transition={{ delay: 0.4 + i * 0.1 }}
+                        className={`text-yellow-400 ${i < full ? 'opacity-100' : 'opacity-30'}`}
+                    >
+                        ⭐
+                    </motion.span>
+                ))}
                 <span className="text-sm text-gray-600 ml-1">({rating})</span>
             </div>
         );
     };
 
     return (
-        <div className={`card bg-base-100 shadow-xl hover:shadow-2xl group cursor-pointer transform transition-all duration-500 hover:-translate-y-3 border border-transparent hover:border-primary/20 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                    }`}>
-            {/* Image with overlay */}
-            <figure className="overflow-hidden relative">
-                <Image
+        <motion.div
+            ref={cardRef}
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={show ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{ type: "spring", stiffness: 120, delay: index * 0.1 }}
+            whileHover={{ scale: 1.02, y: -8 }}
+            onHoverStart={() => setHover(true)}
+            onHoverEnd={() => setHover(false)}
+            className="card bg-base-100 shadow-xl relative overflow-hidden cursor-pointer"
+        >
+
+            {/* Hover Gradient */}
+            <motion.div
+                className="absolute inset-0 bg-base-100"
+                animate={{ opacity: hover ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+            />
+
+            {/* IMAGE SECTION */}
+            <motion.figure className="overflow-hidden relative">
+                <motion.img
                     src={course?.image}
-                    alt={course.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                    alt={course?.title}
+                    className="w-full h-56 object-cover"
+                    animate={{ scale: hover ? 1.1 : 1 }}
+                    transition={{ duration: 0.4 }}
                 />
+
                 {/* Featured Badge */}
                 {course?.featured && (
-                    <div className="absolute top-3 left-3">
-                        <span className="badge badge-primary badge-sm text-white font-bold">
-                            Featured
-                        </span>
-                    </div>
+                    <motion.span
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        className="badge badge-primary badge-sm absolute top-3 left-3 text-white"
+                    >
+                        Featured
+                    </motion.span>
                 )}
-                {/* Category Badge */}
-                <div className="absolute top-3 right-3">
-                    <span className="badge badge-secondary badge-sm text-white">
-                        {course?.category}
-                    </span>
-                </div>
-            </figure>
 
-            <div className="card-body p-5">
-                {/* Title */}
-                <h3 className="card-title text-lg font-bold line-clamp-2 group-hover:text-primary transition-colors">
-                    {course.title}
-                </h3>
+                <motion.span
+                    initial={{ x: 40, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="badge badge-secondary badge-sm absolute top-3 right-3 text-white"
+                >
+                    {course?.category}
+                </motion.span>
+            </motion.figure>
+
+            {/* CONTENT */}
+            <div className="card-body p-5 relative z-10">
+
+                <motion.h3
+                    className="text-lg font-bold line-clamp-2 hover:text-primary transition"
+                    animate={{}}
+                >
+                    {course?.title}
+                </motion.h3>
 
                 {/* Instructor */}
-                <p className="text-sm text-gray-600 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-primary rounded-full"></span>
-                    By {course.instructor}
-                </p>
+                <motion.p className="text-sm text-gray-600 flex items-center gap-2">
+                    <motion.span
+                        className="w-2 h-2 bg-primary rounded-full"
+                        animate={{ scale: [1, 1.5, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    By {course?.instructor}
+                </motion.p>
 
                 {/* Description */}
                 <p className="text-gray-700 text-sm">
-                    {course.description.split(' ').slice(0, 10).join(' ')}...
+                    {course?.description.split(" ").slice(0, 12).join(" ")}...
                 </p>
 
-                {/* Course Details */}
-                <div className="flex flex-wrap gap-3 text-xs text-gray-600">
+                {/* Details (Icons Animated) */}
+                <div className="flex flex-wrap gap-3 text-xs text-gray-600 mt-2">
                     <div className="flex items-center gap-1">
-                        <span>📅</span>
-                        <span>{course.duration}</span>
+                        <motion.span
+                            animate={{ rotate: hover ? 360 : 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            📅
+                        </motion.span>
+                        {course?.duration}
                     </div>
+
                     <div className="flex items-center gap-1">
-                        <span>👥</span>
-                        <span>{course.students}+</span>
+                        <motion.span
+                            animate={{ y: hover ? [-2, 2, -2] : 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            👥
+                        </motion.span>
+                        {course?.students}+
                     </div>
+
                     <div className="flex items-center gap-1">
-                        <span>🎯</span>
-                        <span>{course?.projects} Projects</span>
+                        <motion.span
+                            animate={{ scale: hover ? [1, 1.2, 1] : 1 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            🎯
+                        </motion.span>
+                        {course?.projects} Projects
                     </div>
                 </div>
 
                 {/* Ratings */}
-                <div className="mt-3">
-                    {renderStars(course?.ratings)}
-                </div>
+                <div className="mt-3">{renderStars(course?.ratings)}</div>
 
-                {/* Price & Button */}
-                <div className="card-actions justify-between items-center mt-4 pt-4 border-t border-gray-200">
-                    <div className="flex flex-col">
-                        <span className="text-2xl font-bold text-primary">{course?.price}</span>
-                        <span className="text-xs text-gray-500 line-through opacity-0 group-hover:opacity-100 transition-opacity">
+                {/* Price + Button */}
+                <div className="mt-4 flex justify-between items-center pt-4 border-t">
+                    <div>
+                        <motion.span
+                            animate={{ scale: hover ? 1.1 : 1 }}
+                            className="text-2xl font-bold text-primary"
+                        >
+                            {course?.price}
+                        </motion.span>
+                        <span
+                            className={`text-xs text-gray-500 line-through transition ${
+                                hover ? "opacity-100" : "opacity-0"
+                            }`}
+                        >
                             ৳{(parseInt(String(course?.price).replace(/৳|,/g, '')) || 0) + 2000}
                         </span>
                     </div>
 
-                    <Link
-                        href={`/course/${course._id}`}
-                        className="btn btn-primary btn-sm hover:scale-105 transition-transform group/btn"
-                    >
-                        <span className="group-hover/btn:scale-110 transition-transform">
-                            View Details
-                        </span>
-                    </Link>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <Link
+                            href={`/course/${course?._id}`}
+                            className="btn btn-primary btn-sm relative overflow-hidden"
+                        >
+                            <span className="relative z-10">View Details</span>
+
+                            <motion.div
+                                className="absolute inset-0 bg-white/20"
+                                animate={{ x: hover ? ["-100%", "200%"] : "-100%" }}
+                                transition={{ duration: 0.8 }}
+                            />
+                        </Link>
+                    </motion.div>
                 </div>
             </div>
 
-            {/* Hover Effect Border */}
-            <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/30 rounded-xl transition-all duration-300 pointer-events-none"></div>
-        </div>
+            {/* Hover Border */}
+            <motion.div className="absolute inset-0 border-2 border-primary/0 rounded-xl" animate={{ borderColor: hover ? 'rgba(59, 130, 246, 0.3)' : 'rgba(59, 130, 246, 0)' }} transition={{ duration: 0.3 }} />
+        </motion.div>
     );
 };
 
