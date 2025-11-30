@@ -67,4 +67,4 @@ GOOGLE_CLIENT_ID=your-google-oauth-client-id
 GOOGLE_CLIENT_SECRET=your-google-oauth-client-secret
 
 # Application
-APP_URL=http://localhost:3000
+Live_Link: https://cyber-it-park.vercel.app/
