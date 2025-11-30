@@ -31,7 +31,7 @@ const BannerSection = () => {
                     </div>
                     
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button className="btn btn-accent btn-lg px-8 text-lg font-semibold hover:scale-105 transition-transform">
+                        <button className="btn btn-primary btn-lg px-8 text-lg font-semibold hover:scale-105 transition-transform">
                             🎯 Enroll Now
                         </button>
                         <button className="btn btn-outline btn-lg px-8 text-lg font-semibold text-white border-white hover:bg-white hover:text-primary hover:scale-105 transition-transform">
