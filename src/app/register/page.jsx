@@ -8,17 +8,33 @@ const page = () => {
     const router = useRouter();
     const [error, setError] = useState("");
 
-    const handleRegister = async (e) => {
+    const handleRegister = (e) => {
         e.preventDefault();
 
-        const res = await fetch("https://cyber-it-park-api-server.vercel.app/user", {
+        fetch("https://cyber-it-park-api-server.vercel.app/user", {
             method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
             body: JSON.stringify({
                 name: e.target.name.value,
                 email: e.target.email.value,
                 password: e.target.password.value,
                 image: e.target.photoURL.value
-            }),
+            })
+                .then(res => res.json())
+                .then((data) => {
+                    e.target.reset()
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Your course has been added",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                })
         });
 
         if (res.status === 201) router.push("/login");
