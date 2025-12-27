@@ -24,12 +24,11 @@ const page = () => {
             })
                 .then(res => res.json())
                 .then((data) => {
-                    e.target.reset()
                     if (data.insertedId) {
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
-                            title: "Your course has been added",
+                            title: "Register Successfully",
                             showConfirmButton: false,
                             timer: 1500
                         });
