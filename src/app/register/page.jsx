@@ -11,7 +11,7 @@ const page = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
 
-        const res = await fetch("/user", {
+        const res = await fetch("https://cyber-it-park-api-server.vercel.app/user", {
             method: "POST",
             body: JSON.stringify({
                 name: e.target.name.value,
