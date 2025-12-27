@@ -11,7 +11,7 @@ const page = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
 
-        const res = await fetch("/api/register", {
+        const res = await fetch("/user", {
             method: "POST",
             body: JSON.stringify({
                 name: e.target.name.value,
