@@ -8,10 +8,10 @@ const page = () => {
     const router = useRouter();
     const [error, setError] = useState("");
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
-        fetch("https://cyber-it-park-api-server.vercel.app/user", {
+        const res = await fetch("https://cyber-it-park-api-server.vercel.app/user", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
